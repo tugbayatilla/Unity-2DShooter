@@ -37,7 +37,16 @@
 
 ### Setup controls of the player
 
-- 
+- Set (drag&drop) 'Controller script' Assets -> Scripts -> Player -> Controller.cs to the 'Player' gameobject.
+- INFO: If you run the game, player does not respond to any key compination yet.
+- INFO: you can see an error at toolbar in Unity. (NullReferenceException: object reference not set ...)
+- INFO: you can get detail information from console. Window -> General -> Console.
+- Drag&Drop 'InputManager' to the Level1 Scene. Assets -> Prefabs -> Input -> InputManager.
+- INFO: now, keyboard is working and we are controlling the Player gameobject.
+- INFO: 'InputManager' is collecting input information.
+
+
+
 
 
 
