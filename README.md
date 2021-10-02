@@ -45,6 +45,36 @@
 - INFO: now, keyboard is working and we are controlling the Player gameobject.
 - INFO: 'InputManager' is collecting input information.
 
+### Setup Player Health & Damage
+
+- Set 'Health Script' to the 'Player'. Assets -> Scripts -> Health&Damage -> Health.
+- INFO: TeamId means, which team the object belongs to, so it might NOT take damage from the same team. Do not change this, keep it as 0.
+- Change 'Use Lives' property as true (checked).
+- Set 'Death Effect' with 'PlayerDeathEffect' from Assets -> Prefabs -> Effects -> Player.
+- Set 'Hit Effect' with 'PlayerHitEffect' from Assets -> Prefabs -> Effects -> Player.
+- INFO: to be able to test this 2 effects, we need to add an enemy to the screen.
+- Add an enemy 'StraightShooter' game object to the Leve1 scene (3.11,3.59,0). Assets -> Prefabs -> Enemies -> IndividualEnemies -> StationaryEnemies.
+- INFO: Player location is (0,0,0).
+- INFO: Run the game to test. But no hit to the player.
+- INFO: Because there is no physics applied to the player.
+- INFO: Unity has 2 physics engine. 2D and 3D.
+- INFO: Use 2D physics components all the time in 2D games.
+- Add new 'Rigidbody 2D' component to the 'Player'.
+- INFO: * Now our player will be effected by physics.
+- INFO: If you run the game, 'Player' gameobject will drop from the game screen becase 'Gravity Scale' property has set as 1.
+- Change the 'Gravity Scale' in 'Rigidbody 2D' component in 'Player' gameobject from 1 to 0.
+- INFO: if you run the game, now Player is not dropping but still not getting hit from the enemy.
+- INFO: because 'Rigidbody 2D' is only a part of the physics puzzle.
+- INFO: other part is the 'Collider 2D' component.
+- INFO: if you go the the enemy, you can see the 'Collider 2D' component as green line on it.
+- INFO: We will apply the same component to the 'Player' now.
+- Change 'Collusion Detection' in 'Rigidbody 2D' component from 'Discrete' to 'Continues'. it makes collusion detection more smoothly.
+- Change 'Sleeping Mode' in 'Rigidbody 2D' component from 'Start Awake' to 'Never Sleep'. It makes 'Rigidbody' always active.
+- Add 'Polygon Collider 2D' component to the 'Player' gameobject.
+- Select 'Edit Collider' property in 'Polygon Collider 2D' in 'Player'
+- Reshape the borders of the collider in 'Scene Window' to fit it best.
+- INFO: run the game and try to get it, now the player explodes.
+
 
 
 
