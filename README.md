@@ -75,30 +75,32 @@
 - Reshape the borders of the collider in 'Scene Window' to fit it best.
 - INFO: run the game and try to get it, now the player explodes.
 
+### Setup Player Fighting Back
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- INFO: we has to fight back.
+- Add 'ShootingController script' to the 'Player'. Assets -> Scripts -> ShootingProjectiles.
+- INFO: ProjectilePrefab property (mandatory) is used for the projectiles that we want to fire in the 'ShootingController' compponent in the 'Player'.
+- INFO: ProjectileHolder property (optional) is used for keeping all the projectiles in a gameobject to make the scene clean in the 'ShootingController' compponent in the 'Player'.
+- Set 'Is Player Controlled' to true.
+- Set 'Player_Projectile' prefab to 'Projectile Prefab' property in the  'ShootingController script' component. Assert -> Prefabs -> Projectiles -> Player_Projectile.
+- INFO: run the game, now we can fire the projectiles with mouse left click.
+- INFO: when you fire the projectiles, you can see a lot of projectiles in the scene. 
+- INFO: lets make them organized.
+- Create new empty 'GameObject' named as 'ProjectileHolder' in the scene.
+- INFO: Now our hierarchy view is not flooded by projectiles.
+- Create new empty 'GameObject' named as 'PlayerFireEffect' in the scene.
+- Add 'AudioSource' component to the 'PlayerFireEffect' gameobject.
+- Add 'Timed Object Destroyer' script to the 'PlayerFireEffect' gameobject.
+- INFO: The most important property on 'AudioSource' is 'AudioClip' property.
+- Set 'PlayerFire' sound to the 'AudioClip' property in the 'AudioSource' component in the 'PlayerFireEffect' gameobject.
+- Make prefab the 'PlayerFireEffect' gameobject. Simply Drag&Drop the 'PlayerFireEffect' gameobject to the 'Prefabs' folder. Assets -> Prefabs -> Effects -> Player.
+- Set 'PlayerFireEffect' prefab to the 'Fire Effect' in the 'ShootingController script' component in the 'Player' gameobject.
+- Delete the 'PlayerFireEffect' gameobject from the scene. (becauae we have this objects as prefab now.)
+- INFO: now you hear the file sound effect everytime when you fire.
+- Change the 'Player' 'Tag' property from 'Untagged' to 'Player'. it will be important in the future.
+- Create a folder named as 'Player'. Assets -> Prefabs -> Player. 
+- Make prefab the 'Player' gameobject. Drag&Drop to the prefabs folder. Assets -> Prefabs -> Player. 
+- INFO: Now we can use player prefab in other levels.
 
 
 
