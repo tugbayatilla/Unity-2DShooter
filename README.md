@@ -300,8 +300,18 @@
 - Rename Canvas to 'InGameUICanvas'.
 - Make prefab from 'InGameUICanvas'. Assets -> Prefabs -> UI.
 
+ ### Setup Audio and Music
  
+ - Select 'MainMenu' scene.
+ - Create new 'GameObject' and name as 'MainMenuMusic'.
+ - Add 'AudioSource' component to 'MainMenuMusic' gameobject.
+ - Set 'Menu' music to 'AudioClip' property in AudioSource component in the 'MainMenuMusic' gameobject. Assets -> Audio -> Music.
+ - Set 'Loop' property to true.
+ - Select 'Level1' scene.
+ - Create new 'GameObject' and name as 'GameMusic'.
+ - Add 'AudioSource' component to 'GameMusic' gameobject.
+ - Set 'SongA' music to 'AudioClip' property in AudioSource component in the 'GameMusic' gameobject. Assets -> Audio -> Music.
+ - Set 'Loop' property to true.
  
-
 
 
