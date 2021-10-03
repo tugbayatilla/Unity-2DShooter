@@ -288,7 +288,7 @@
 - INFO: UIManager Page Order so far should be, 'PauseScreen', 'GameOverScreen', 'LevelWinScreen'.
 - Create a scene names 'MainMenu' in the Scenes assets. Assets -> Scenes.
 - INFO: 'MainMenu' should ne exacly as here. no space, no change at all. because this name was used in the scripts.**
-- Goto 'File Menu' and select 'Build Settings' and add the scenes to the 'Scenes In Build' list.
+- Goto 'File Menu' and select 'Build Settings' and add 'MainMenu' scene to the 'Scenes In Build' list.
 - Select 'MainMenu' by double clicking.
 - Add 'MainMenu' prefab to the 'MainMenu' scene. Assets -> Prefabs -> UI.
 - Select 'Level1' scene again.
@@ -313,5 +313,13 @@
  - Set 'SongA' music to 'AudioClip' property in AudioSource component in the 'GameMusic' gameobject. Assets -> Audio -> Music.
  - Set 'Loop' property to true.
  
+### Setup More Levels
 
+- INFO: if you don't want to do all of the levels from scratch, use level1 prefab.
+- Duplicate Level1 asset in Scenes with CTRL+D command. Assets -> Scenes.
+- Rename 'Level1 1' to 'Level2'.
+- Goto 'File Menu' and select 'Build Settings' and add 'Level2' scene to the 'Scenes In Build' list.
+- Select 'Level1' scene.
+- Change 'NextLevelButton' function argument from 'MainMenu' to 'Level2' in 'LevelWinScreen' gameobject.
+- Repeat all for every new level. 
 
