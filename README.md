@@ -179,3 +179,51 @@
 - Dublicate 'Score text' gameobject and rename as 'High Score text'.
 - Move the 'High Score text' gameobject on the scene to (0,-21,0).
 - Change the 'Text' property of the 'High Score: 0' gameobject.
+
+### Setup End Game UI and Pause Screen
+
+- Add 'ScoreDisplay' script to 'Score text' gameobject. Assets -> Scripts -> UI.
+- INFO: 'ScoreDisplay' scripts updates the score display when the GameManager tells it to.
+- Set 'Score text' gameobject to 'Display Text' property in the 'ScoreDisplay' scripts in the 'Score text' gameobject. (set itself in the script)
+- INFO: run the game, now you can see the score when you destroy the enemy. 
+- Set 'High Score text' gameobject to 'Display Text' property in the 'HighScoreDisplay' scripts in the 'High Score text' gameobject. (set itself in the script)
+- INFO: run the game, now you can see the high score value that we have already obtained earlier.
+- ISSUE: now when you click the escape key, the game pauses yet there is no screen to show this.
+- Create new 'Image' gameobject in the 'Canvas'.
+- Change the 'Source Image' from 'None' to 'UIBackdrop' in the 'Image' component in the 'Image' gameobject. Assets -> Art -> UI Elements -> Backdrop.
+- Rename the 'Image' gameobject to 'Pause Screen' on the scene.
+- Resize the 'Pause Screen' to W:340, H:340.
+- Add 'Text' gameobject in the 'Pause Screen' for title of the game.
+- Rename 'Text' gameobject to 'Title text' in the 'Pause Screen'.
+- Anchor 'Title text' gameobject to top-center.
+- Change 'Title text' gameobject position to (0,-21,0).
+- Change 'Title text' gameobject properties, Text as 'Paused', Font as 'manaspc', Font Size as '36', Alignment as 'Center-Center', Horizontal and Vertical Overflow as 'Overflow'.
+- Add 'Button' gameobject in the 'Pause Screen' for unpausing the game.
+- Rename 'Button' gameobject to 'Un-Pause Button' in the 'Pause Screen'.
+- Change 'Un-Pause Button' gameobject 'Text' gameobject Text to 'Un-Pause', Font as 'manaspc'.
+- Change 'Un-Pause Button' gameobject 'Source Image' property to 'UIButton_0' in the 'Image' component. Assets -> Art -> UI Elements -> Buttons.
+- Change 'Un-Pause Button' gameobject 'Transition' property to 'Sprite Swap' in the 'Button' component.
+- Change 'Un-Pause Button' gameobject 'Highlighted Sprite' property to 'UIButton_1' in the 'Button' component. Assets -> Art -> UI Elements -> Buttons.
+- Change 'Un-Pause Button' gameobject 'Press Sprite' property to 'UIButton_1' in the 'Button' component. Assets -> Art -> UI Elements -> Buttons.
+- Change 'Un-Pause Button' gameobject 'Selected Sprite' property to 'UIButton_1' in the 'Button' component. Assets -> Art -> UI Elements -> Buttons.
+- INFO: don't change 'Disabled Sprite' property in the 'Button' component.
+- ISSUE: run the game, now you can mouse over the button but it's not so clear clicked and hover. to fix this, there is a script called 'Highlight Fix' by Unity.
+- Add 'Highlight Fix' script to the 'Un-Pause Button' gameobject.
+- Add OnClick Event to 'Un-Pause Button' gameobject.
+- Set UIManager as Object in the 'Un-Pause Button' gameobject.
+- Select xxx as UIManager.TogglePause function in the 'Un-Pause Button' gameobject.
+- ISSUE: run the game, now pause button works as expected, yet pause screen always stays on the screen.
+- INFO: we are going to setup UIManager pages.
+- Add 'UI Page' script to 'Pause Screen' gameobject.
+- Set 'Un-Pause Button' gameobject to 'Default Selected' property in the 'UI Page' script to 'Pause Screen' gameobject.
+- Set 'Pause Screen' gameobject in the 'Element 0' property in the 'UI Manager' script in the 'UIManager' gameobject.
+- Change the 'Page Page Index' from 1 to 0 (because the 'Pause Screen index is 0').
+- Change the visibility to false of the 'Pause Screen' gameobject.
+- INFO: run the game, now you can click escape key to pause the game and click unpause button to unpause.
+- ISSUE: when we change the 'Aspect Ratio' of the game to 5:4, 5:3 or other, the 'Pause Screen' gameobject will not scale correctly.
+- Change 'UI Scale Mode' from 'Constant Pixel Size' to 'Scale With Screen Size' in the 'Canvas Scaler' in the 'Canvas'.
+- Change 'Match' from 0 to 0.5 in the 'Canvas Scaler' in the 'Canvas'.
+- INFO: now we can change the 'Aspect ratio' and the 'Pause Screen' gameobject will adapt the ratio.
+
+
+ 
