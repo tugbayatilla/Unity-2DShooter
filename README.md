@@ -102,5 +102,21 @@
 - Make prefab the 'Player' gameobject. Drag&Drop to the prefabs folder. Assets -> Prefabs -> Player. 
 - INFO: Now we can use player prefab in other levels.
 
+### Setup Cameras To Frame the Action
 
-
+- INFO: we have a camera named 'Main Camera' is already setup in prefabs. Assets -> Prefabs -> Camera.
+- Delete 'Main Camera' gameobject from the scene.
+- Add 'Main Camera' prefab from the prefabs. Assets -> Prefabs -> Camera.
+- INFO: in 2D games, the 'Transform' of the camrea, 'Rotation' and 'Scale' is not so effective yet, 'Position' is very important.
+- INFO: in 2D games, in Camera settings, 'Projection' should be 'Orthographic'.
+- Change 'Background' color from blue to black.
+- INFO: if you are working on gameobject that has been created from prefab which turns to blue in hierarchy view, and want to change on gameobject and will be effected to all prefabs, you need to select at the top 'override' and then select 'apply all'.
+- Rename the camera gameobject in Hierarchy View from 'Main Camera' to 'Large Camera'.
+- Make prefab from the 'Large Camera'. Drag&Drop 'Large Camera' to the prefab folder and select 'Original Prefab' in popup menu. Assets -> Prefabs -> Camera.
+- Rename the camera in prefabs assets from 'Main Camera' to 'Small Camera'. Assets -> Prefabs -> Camera.
+- Change the camera 'Size' from 8 to 5 in 'Small Camera' prefab. 
+- INFO: There is a script called 'Camera Controller' added to the camera which controls how the camera moves.
+- Set 'Player' gameobject to 'Target' property in 'Camera Controller script' component in 'Large Camera' gameobject.
+- Change 'Camera Movement Sytle' property from 'Locked' to 'Free' in 'Camera Controller script' component in 'Large Camera' gameobject.
+- INFO: run the game, and the camera follows the player.
+  
