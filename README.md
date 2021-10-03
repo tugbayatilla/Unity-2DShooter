@@ -150,3 +150,32 @@
 - Move all 'B_CompleteSpaceBackground' gameobject that you have into the 'Background' gameobject.
 - Create new 'Game Object' named 'Walls' (0,0,0) in the 'Environments' gameobject to organize 'Hierarchy View'.
 - Move all 'WallOfAsteroids' gameobject that you have into the 'Background' gameobject.
+
+### Setup Game Loop with Game Manager and UI
+
+- Add 'GameManager' prefab to the Scene. Assets -> Prefabs -> Management.
+- INFO: 'GameManager' keeps the state of the game.
+- Add 'UIManager' prefab to the Scene. Assets -> Prefabs -> Management.
+- Set 'UIManager' gameobject into the 'Ui Manager' property in the 'Game Manager' script in the 'GameManager' gameobject.
+- Set 'Player' gameobject into the 'Player' property in the 'Game Manager' script in the 'GameManager' gameobject.
+- INFO: run the game, you will see couple of warning messages. "There is no event system in the scene but you are trying to use the UIManager. /nAll UI in Unity requires an Event System to run. /nYou can add one by right clicking in hierarchy then selecting UI->EventSystem."
+- Create a 'Canvas' in the scene. 
+- INFO: creating a canvas, also creates a 'EventSystem' gameobject automatically.
+- INFO: Because we are using 'InputSystem' (we setup the project with this) we need to replace 'Standalone Input Module'. fortunatelly it's easy.
+- Select the 'EventSystem' and click the 'Replace with InputSystemUIInputModule' button in the 'Standalone Input Module'.
+- Set 'Action Asset' property in 'Input System UI Input Module' script in 'EventSystem' with 'UIInputActions' prefab. Assets -> Prefabs -> Input.
+- INFO: now our eventsystem must be setup correctly.
+- INFO: 'Canvas Scaler' in Canvas is the most important part. Because in different resolutions the application react differently.
+- INFO: we are going to add score and high score into the canvas.
+- Create new 'Text' gameobject name as 'Score text' in the Canvas.
+- Change the 'Text' property to 'Score: 0' in 'Text' gameobject.
+- Change the 'Font' property to 'manaspc' in 'Text' gameobject.
+- Change the 'Color' property to white in 'Text' gameobject.
+- Move the 'Text' gameobject to top-left corver of the canvas.
+- ISSUE: if you change the ratio of the screen in the 'Game View' to different aspects, you can see 'Text' gameobject might be out of canvas.
+- INFO: all of because of the anchor to the parent object. we need to set it correctly.
+- Change the 'Rect Transform' from 'middle-center' to 'top-left'. you can use 'Shift' and 'Alt' keyboard keys as helpers.
+- INFO: you can see the cross marking set to the top-left corner instead of center of the canvas.
+- Dublicate 'Score text' gameobject and rename as 'High Score text'.
+- Move the 'High Score text' gameobject on the scene to (0,-21,0).
+- Change the 'Text' property of the 'High Score: 0' gameobject.
