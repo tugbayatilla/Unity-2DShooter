@@ -138,18 +138,54 @@
 - ISSUE: the background is not covering all background.
 - INFO: Scaling the background is not a solution because it will not cover enough area and also the quality of the images will dramatically drop.
 - INFO: we will create more backgrounds.
-- Dublicate the 'B_CompleteSpaceBackground' gameobject in 'Hierarchy View'.
-- Move the dublicated gameobject next to the previous background in 'Scene View'.
-- INFO: if you click 'v' on the keyboard, you can easly put backgrounds next to each other.
+- Duplicate 'Main Menu Button' in the  the 'B_CompleteSpaceBackground' gameobject in 'Hierarchy View'.INFO: gameobject.
+- Move 'Main Menu Button (1)' to the 'Pause Screen' gameobject.
+- Rename 'Main Menu Button (1)' to the 'Main Menu Button'
+- Change 'Main Menu Button' gameobject in the 'Pause Screen' position to (0,-43,0).
+- Add : we gameobject to the 'Pages' in 'UIManager' gameobject.
+- Change 'Game Over  Page Index' from 0 to 1. (1 is the index of 'GameOverScreen' index in the Pages in 'UIManager').
+--- Change 'Game Victory  Page Index' from 0 to 2. (2 is the index of 'GameVictoryScreen' index in the Pages in 'UIManager'). 
+- 
+- Duplicate 'LevelWinu Button' in the  the 'B_CompleteSpaceBackground' gameobject in 'Hierarchy View'.INFO: gameobject.
+- Change 'Game Over  Page Index' from 0 to 1. (1 is the index of 'GameOverScreen' index in the Pages in 'UIManager').
+- Move  Duplicate 'Main Menu (1)  to the 'Pause Screen' gameobject.
+- Rename  Duplicate 'Main Menu (1)  to the Rename  Duplicate 'Main Menu 
+- Change Duplicate 'Main Menu  gameobject in the 'Pause Screen' position to (0,-43,0).
+- Add  -  gameobject to the 'Pages' in 'UIManager' gameobject.
+
+
+
+
+- Change 'Game Over  Page Index' from 0 to 1. (1 is the index of 'GameOverScreen' index in the Pages in 'UIManager').
+--- Change 'Game Victory  Page Index' from 0 to 2. (2 is the index of 'GameVictoryScreen' index in the Pages in 'UIManager'). 
+- 
+- Move tLevelWincate 'Main Menu Button' in the d gameobject next to the previous background in 'Scene View'.Button' gameobject.
+- Change 'Game Over  Page Index' from 0 to 1. (1 is the index of 'GameOverScreen' index in the Pages in 'UIManager').
 - INFO: we will also add 'WallOfAsteroids' to be able to restrict the game area.
 - Add (4 Times) 'WallOfAsteroids' prefab to the 'Scene View'. Assets -> Prefabs -> Environment & Hazards -> Stationary.
 - Make 'WallOfAsteroids' as a square to limit the game area.
-- Dublicate enough 'B_CompleteSpaceBackground' gameobject to cover the background. ()
-- Create new 'Game Object' named 'Environments' (0,0,0) to organize 'Hierarchy View'.
+- Duplicate 'Main Menu Button' in the  enough 'B_CompleteSpaceBackground' gameobject to cover the background. ()'WallOfAsteroids' gameobject.
+
+
+
+
+- Move 'Main Menu Button (1)' to the 'Pause Screen' gameobject.
+- Rename 'Main Menu Button (1)' to the 'Main Menu Button'
+- Change 'Main Menu Button' gameobject in the 'Pause Screen' position to (0,-43,0).
+- Add  'WallOfAsteroids' gameobject to the 'Pages' in 'UIManager' gameobject.
+- Change 'Game Over  Page Index' from 0 to 1. (1 is the index of 'GameOverScreen' index in the Pages in 'UIManager').
+--- Change 'Game Victory  Page Index' from 0 to 2. (2 is the index of 'GameVictoryScreen' index in the Pages in 'UIManager'). 
+- 
+- Duplicate 'LevelWinu Button' in the  enough 'B_CompleteSpaceBackground' gameobject to cover the background. ()'WallOfAsteroids' gameobject.
+- Change 'Game Over  Page Index' from 0 to 1. (1 is the index of 'GameOverScreen' index in the Pages in 'UIManager').
 - Create new 'Game Object' named 'Background' (0,0,0) in the 'Environments' gameobject to organize 'Hierarchy View'.
 - Move all 'B_CompleteSpaceBackground' gameobject that you have into the 'Background' gameobject.
 - Create new 'Game Object' named 'Walls' (0,0,0) in the 'Environments' gameobject to organize 'Hierarchy View'.
 - Move all 'WallOfAsteroids' gameobject that you have into the 'Background' gameobject.
+
+
+
+
 
 ### Setup Game Loop with Game Manager and UI
 
@@ -176,11 +212,23 @@
 - INFO: all of because of the anchor to the parent object. we need to set it correctly.
 - Change the 'Rect Transform' from 'middle-center' to 'top-left'. you can use 'Shift' and 'Alt' keyboard keys as helpers.
 - INFO: you can see the cross marking set to the top-left corner instead of center of the canvas.
-- Dublicate 'Score text' gameobject and rename as 'High Score text'.
-- Move the 'High Score text' gameobject on the scene to (0,-21,0).
+- Duplicate 'Main Menu Button' in the  'Score text' gameobject and rename as 'High Score text'. you can gameobject.
+- Move 'Main Menu Button (1)' to the 'Pause Screen' gameobject.
+- Rename 'Main Menu Button (1)' to the 'Main Menu Button'
+- Change 'Main Menu Button' gameobject in the 'Pause Screen' position to (0,-43,0).
+- Add : you gameobject to the 'Pages' in 'UIManager' gameobject.
+- Change 'Game Over  Page Index' from 0 to 1. (1 is the index of 'GameOverScreen' index in the Pages in 'UIManager').
+--- Change 'Game Victory  Page Index' from 0 to 2. (2 is the index of 'GameVictoryScreen' index in the Pages in 'UIManager'). 
+- 
+- Duplicate 'LevelWinu Button' in the  'Score text' gameobject and rename as 'High Score text'. you can gameobject.
+- Change 'Game Over  Page Index' from 0 to 1. (1 is the index of 'GameOverScreen' index in the Pages in 'UIManager').
 - Change the 'Text' property of the 'High Score: 0' gameobject.
 
 ### Setup End Game UI and Pause Screen
+
+
+
+
 
 - Add 'ScoreDisplay' script to 'Score text' gameobject. Assets -> Scripts -> UI.
 - INFO: 'ScoreDisplay' scripts updates the score display when the GameManager tells it to.
@@ -225,5 +273,35 @@
 - Change 'Match' from 0 to 0.5 in the 'Canvas Scaler' in the 'Canvas'.
 - INFO: now we can change the 'Aspect ratio' and the 'Pause Screen' gameobject will adapt the ratio.
 
+### Setup Game Loop In-Game UI and Main Menu
+ 
+- Add 'GameOverScreen' prefab in the Canvas. Assets -> Prefabs -> UI -> UIPages.
+- Duplicate 'Main Menu Button' in the 'GameOverScreen' gameobject.
+- Move 'Main Menu Button (1)' to the 'Pause Screen' gameobject.
+- Rename 'Main Menu Button (1)' to the 'Main Menu Button'
+- Change 'Main Menu Button' gameobject in the 'Pause Screen' position to (0,-43,0).
+- Add 'GameOverScreen' gameobject to the 'Pages' in 'UIManager' gameobject.
+- Change 'Game Over Page Index' from 0 to 1. (1 is the index of 'GameOverScreen' index in the Pages in 'UIManager').
+- Add 'LevelWinScreen' prefab in the Canvas. Assets -> Prefabs -> UI -> UIPages.
+- Add 'LevelWinScreen' gameobject to the 'Pages' in 'UIManager' gameobject.
+- Change 'Game Victory Page Index' from 0 to 2. (2 is the index of 'LevelWinScreen' index in the Pages in 'UIManager'). 
+- INFO: UIManager Page Order so far should be, 'PauseScreen', 'GameOverScreen', 'LevelWinScreen'.
+- Create a scene names 'MainMenu' in the Scenes assets. Assets -> Scenes.
+- INFO: 'MainMenu' should ne exacly as here. no space, no change at all. because this name was used in the scripts.**
+- Goto 'File Menu' and select 'Build Settings' and add the scenes to the 'Scenes In Build' list.
+- Select 'MainMenu' by double clicking.
+- Add 'MainMenu' prefab to the 'MainMenu' scene. Assets -> Prefabs -> UI.
+- Select 'Level1' scene again.
+- Change 'Enemies To Defeat' from 10 to 3 in the 'GameManager'.
+- Add 3 enemies to the 'Scene View'. Assets -> Prefabs -> Enemies.
+- INFO: run the game, now you can destroy all the enemies and victory screen will be shown.
+- Change 'NextLevelButton' property from "<empty string>" to 'MainMenu' in OnClick event in 'NextLevelButton' gameobject.
+- Move 'EventSystem' into the 'Canvas'.
+- Rename Canvas to 'InGameUICanvas'.
+- Make prefab from 'InGameUICanvas'. Assets -> Prefabs -> UI.
 
  
+ 
+
+
+
