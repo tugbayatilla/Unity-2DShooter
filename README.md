@@ -120,3 +120,33 @@
 - Change 'Camera Movement Sytle' property from 'Locked' to 'Free' in 'Camera Controller script' component in 'Large Camera' gameobject.
 - INFO: run the game, and the camera follows the player.
   
+### Setup Level Environment Sprites
+
+- INFO: we are going to make the level little bit interasting.
+- INFO: we are going to use Environment sprites. Assets -> Art -> Environment.
+- Add 'B_CompleteSpaceBackground' sprite from prefabs to 'Scene View'. Assets -> Art -> Environment -> Background.
+- INFO: this action will automatically add a new gameobject with the same name with the sprite, and add a new 'Sprite Renderer' component into the gameobject.
+- INFO: we have a layer issue in here. In Game View, we do not see the Player and the Enemy anymore. Because all gameobjects are using 'Default' in 'Sorting Layer'.
+- INFO: 'Sorting Layer' is the rendering order on the game view by the unity engine.
+- Select the 'Layers' dropdown menu at the top-right corner of the Unity Editor.
+- Select 'Edit Layers...' at the bottom of the opened menu.
+- Expand 'Sorting Layers' and click plus(+) button to add new layer.
+- Rename the new layer as 'Background'.
+- Change the order of the layer. Move the 'Background' to the top, so it will be the first layer that will be rendered by Unity Engine.
+- Change the 'Sorting Layer' property from 'Default' to 'Background' in the 'Sprite Renderer' component in the 'B_CompleteSpaceBackground' gameobject.
+- INFO: now in 'Game View', you can see the 'Player' and the 'Enemy' again.
+- ISSUE: the background is not covering all background.
+- INFO: Scaling the background is not a solution because it will not cover enough area and also the quality of the images will dramatically drop.
+- INFO: we will create more backgrounds.
+- Dublicate the 'B_CompleteSpaceBackground' gameobject in 'Hierarchy View'.
+- Move the dublicated gameobject next to the previous background in 'Scene View'.
+- INFO: if you click 'v' on the keyboard, you can easly put backgrounds next to each other.
+- INFO: we will also add 'WallOfAsteroids' to be able to restrict the game area.
+- Add (4 Times) 'WallOfAsteroids' prefab to the 'Scene View'. Assets -> Prefabs -> Environment & Hazards -> Stationary.
+- Make 'WallOfAsteroids' as a square to limit the game area.
+- Dublicate enough 'B_CompleteSpaceBackground' gameobject to cover the background. ()
+- Create new 'Game Object' named 'Environments' (0,0,0) to organize 'Hierarchy View'.
+- Create new 'Game Object' named 'Background' (0,0,0) in the 'Environments' gameobject to organize 'Hierarchy View'.
+- Move all 'B_CompleteSpaceBackground' gameobject that you have into the 'Background' gameobject.
+- Create new 'Game Object' named 'Walls' (0,0,0) in the 'Environments' gameobject to organize 'Hierarchy View'.
+- Move all 'WallOfAsteroids' gameobject that you have into the 'Background' gameobject.
