@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -24,12 +25,14 @@ public class Controller : MonoBehaviour
     //The InputManager to read input from
     private InputManager inputManager;
 
-	public Vector3 movementVector;
+    public Vector3 movementVector;
 
-	/// <summary>
-	/// Enum which stores different aiming modes
-	/// </summary>
-	public enum AimModes { AimTowardsMouse, AimForwards };
+    public GameObject movementEffect;
+
+    /// <summary>
+    /// Enum which stores different aiming modes
+    /// </summary>
+    public enum AimModes { AimTowardsMouse, AimForwards };
 
     [Tooltip("The aim mode in use by this player:\n" +
         "Aim Towards Mouse: Player rotates to face the mouse\n" +
@@ -102,6 +105,31 @@ public class Controller : MonoBehaviour
         HandleInput();
         // Sends information to an animator component if one is assigned
         SignalAnimator();
+
+        SetEffects();
+    }
+
+    private GameObject activeMovementEffect;
+    private void SetEffects()
+    {
+        if (movementEffect != null)
+        {
+            if (movementVector.magnitude > 0)
+            {
+                if (activeMovementEffect == null)
+                {
+                    activeMovementEffect = Instantiate(movementEffect, gameObject.transform.position, gameObject.transform.rotation);
+                }
+            }
+            else
+            {
+                if (activeMovementEffect != null)
+                {
+                    DestroyImmediate(activeMovementEffect);
+                    activeMovementEffect = null;
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -156,13 +184,13 @@ public class Controller : MonoBehaviour
         // Handle Animation
         if (animator != null)
         {
-			
+
         }
 
-		if(currentAnimator != null)
-		{
-			currentAnimator.SetFloat("Speed", movementVector.magnitude);
-		}
+        if (currentAnimator != null)
+        {
+            currentAnimator.SetFloat("Speed", movementVector.magnitude);
+        }
     }
 
     /// <summary>

@@ -9005,6 +9005,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4680040452370032488, guid: 44352ef561381c040b705301ae11c463, type: 3}
+      propertyPath: movementEffect
+      value: 
+      objectReference: {fileID: 8448815644001758205, guid: 92aac0ed78132d04b9d015b0f1ee38f2, type: 3}
+    - target: {fileID: 4680040452370032488, guid: 44352ef561381c040b705301ae11c463, type: 3}
       propertyPath: currentAnimator
       value: 
       objectReference: {fileID: 1154955664}
