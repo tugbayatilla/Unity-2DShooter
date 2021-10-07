@@ -124,6 +124,8 @@ public class GameManager : MonoBehaviour
         {
             FigureOutHowManyEnemiesExist();
         }
+
+        completedScenes = new List<string>();
     }
 
     /// <summary>
@@ -329,6 +331,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool gameIsOver = false;
 
+
+
     /// <summary>
     /// Description:
     /// Displays game over screen
@@ -353,9 +357,19 @@ public class GameManager : MonoBehaviour
 
     [Header("Conditions")]
     public List<GameWinLooseCondition> winLostConditions;
+    public string currentSceneName;
+    public List<string> completedScenes;
+
 
     private void Update()
     {
+        if (gameIsOver)
+        {
+            return;
+        }
+
+        if (completedScenes.Contains(currentSceneName)) { return; }
+
         if (winLostConditions != null && winLostConditions.Count > 0)
         {
             foreach (var condition in winLostConditions)
@@ -365,7 +379,9 @@ public class GameManager : MonoBehaviour
                     switch (condition.status)
                     {
                         case GameWinLooseCondition.WinLostStatus.Win:
+                            Debug.Log("Level Cleared!");
                             LevelCleared();
+                            completedScenes.Add(currentSceneName);
                             break;
                         case GameWinLooseCondition.WinLostStatus.Lost:
                             GameOver(condition.message);
