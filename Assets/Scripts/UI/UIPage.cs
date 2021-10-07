@@ -11,6 +11,8 @@ public class UIPage : MonoBehaviour
     [Tooltip("The default UI to have selected when opening this page")]
     public GameObject defaultSelected;
 
+    public Text infoText;
+
     /// <summary>
     /// Description:
     /// Sets the selected UI selectable to the default defined by this UIPage
@@ -26,6 +28,13 @@ public class UIPage : MonoBehaviour
             GameManager.instance.uiManager.eventSystem.SetSelectedGameObject(null);
             GameManager.instance.uiManager.eventSystem.SetSelectedGameObject(defaultSelected);
         }
-        
+    }
+
+    public void SetMessageToInfoText(string infoMessage)
+    {
+        if (infoText != null)
+        {
+            infoText.text = infoMessage;
+        }
     }
 }

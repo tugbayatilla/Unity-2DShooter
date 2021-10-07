@@ -69,7 +69,7 @@ public class UIManager : MonoBehaviour
         if (GameManager.instance != null && GameManager.instance.uiManager == null)
         {
             GameManager.instance.uiManager = this;
-        }     
+        }
     }
 
     /// <summary>
@@ -100,7 +100,7 @@ public class UIManager : MonoBehaviour
         if (eventSystem == null)
         {
             Debug.LogWarning("There is no event system in the scene but you are trying to use the UIManager. /n" +
-                "All UI in Unity requires an Event System to run. /n" + 
+                "All UI in Unity requires an Event System to run. /n" +
                 "You can add one by right clicking in hierarchy then selecting UI->EventSystem.");
         }
     }
@@ -150,7 +150,7 @@ public class UIManager : MonoBehaviour
                 Time.timeScale = 0;
                 isPaused = true;
             }
-        }      
+        }
     }
 
     /// <summary>
@@ -226,13 +226,17 @@ public class UIManager : MonoBehaviour
     /// void (no return)
     /// </summary>
     /// <param name="pageIndex">The index in the page list to go to</param>
-    public void GoToPage(int pageIndex)
+    public void GoToPage(int pageIndex, string infoMessage = null)
     {
         if (pageIndex < pages.Count && pages[pageIndex] != null)
         {
             SetActiveAllPages(false);
             pages[pageIndex].gameObject.SetActive(true);
             pages[pageIndex].SetSelectedUIToDefault();
+            if (infoMessage != null)
+            {
+                pages[pageIndex].SetMessageToInfoText(infoMessage);//fistan
+            }
         }
     }
 
