@@ -11,6 +11,7 @@ public class Controller : MonoBehaviour
     [Header("GameObject/Component References")]
     [Tooltip("The animator controller used to animate the player.")]
     public RuntimeAnimatorController animator = null;
+    public Animator currentAnimator = null;
     [Tooltip("The Rigidbody2D component to use in \"Astroids Mode\".")]
     public Rigidbody2D myRigidbody = null;
 
@@ -23,10 +24,12 @@ public class Controller : MonoBehaviour
     //The InputManager to read input from
     private InputManager inputManager;
 
-    /// <summary>
-    /// Enum which stores different aiming modes
-    /// </summary>
-    public enum AimModes { AimTowardsMouse, AimForwards };
+	public Vector3 movementVector;
+
+	/// <summary>
+	/// Enum which stores different aiming modes
+	/// </summary>
+	public enum AimModes { AimTowardsMouse, AimForwards };
 
     [Tooltip("The aim mode in use by this player:\n" +
         "Aim Towards Mouse: Player rotates to face the mouse\n" +
@@ -134,7 +137,7 @@ public class Controller : MonoBehaviour
         // Find the position that the player should look at
         Vector2 lookPosition = GetLookPosition();
         // Get movement input from the inputManager
-        Vector3 movementVector = new Vector3(inputManager.horizontalMoveAxis, inputManager.verticalMoveAxis, 0);
+        movementVector = new Vector3(inputManager.horizontalMoveAxis, inputManager.verticalMoveAxis, 0);
         // Move the player
         MovePlayer(movementVector);
         LookAtPoint(lookPosition);
@@ -153,8 +156,13 @@ public class Controller : MonoBehaviour
         // Handle Animation
         if (animator != null)
         {
-
+			
         }
+
+		if(currentAnimator != null)
+		{
+			currentAnimator.SetFloat("Speed", movementVector.magnitude);
+		}
     }
 
     /// <summary>
