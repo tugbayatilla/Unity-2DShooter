@@ -12,6 +12,8 @@ using UnityEngine.UIElements;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+
+
     // The script that manages all others
     public static GameManager instance = null;
 
@@ -48,7 +50,7 @@ public class GameManager : MonoBehaviour
     public bool gameIsWinnable = true;
     [Tooltip("The number of enemies that must be defeated to win the game")]
     public int enemiesToDefeat = 10;
-    
+
     // The number of enemies defeated in game
     private int enemiesDefeated = 0;
 
@@ -122,6 +124,8 @@ public class GameManager : MonoBehaviour
         {
             FigureOutHowManyEnemiesExist();
         }
+
+        completedScenes = new List<string>();
     }
 
     /// <summary>
@@ -145,7 +149,7 @@ public class GameManager : MonoBehaviour
         int numberOfInfiniteSpawners = 0;
         int enemiesFromSpawners = 0;
         int enemiesFromStatic = staticEnemies.Count;
-        foreach(EnemySpawner enemySpawner in enemySpawners)
+        foreach (EnemySpawner enemySpawner in enemySpawners)
         {
             if (enemySpawner.spawnInfinite)
             {
@@ -167,7 +171,7 @@ public class GameManager : MonoBehaviour
             }
             else if (enemiesToDefeat > numberOfEnemiesFoundAtStart)
             {
-                Debug.LogWarning("There are " + enemiesToDefeat + " enemies to defeat but only " + numberOfEnemiesFoundAtStart + 
+                Debug.LogWarning("There are " + enemiesToDefeat + " enemies to defeat but only " + numberOfEnemiesFoundAtStart +
                     " enemies found at start \nThe level can not be completed!");
             }
             else
@@ -227,7 +231,7 @@ public class GameManager : MonoBehaviour
         }
         UpdateUIElements();
     }
-    
+
     /// <summary>
     /// Description:
     /// Resets the current player score
@@ -314,7 +318,7 @@ public class GameManager : MonoBehaviour
             {
                 Instantiate(victoryEffect, transform.position, transform.rotation, null);
             }
-        }     
+        }
     }
 
     [Header("Game Over Settings:")]
@@ -327,6 +331,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool gameIsOver = false;
 
+
+
     /// <summary>
     /// Description:
     /// Displays game over screen
@@ -335,7 +341,7 @@ public class GameManager : MonoBehaviour
     /// Returns:
     /// void (no return)
     /// </summary>
-    public void GameOver()
+    public void GameOver(string infoMessage = null) //fistan
     {
         gameIsOver = true;
         if (gameOverEffect != null)
@@ -345,7 +351,48 @@ public class GameManager : MonoBehaviour
         if (uiManager != null)
         {
             uiManager.allowPause = false;
-            uiManager.GoToPage(gameOverPageIndex);
+            uiManager.GoToPage(gameOverPageIndex, infoMessage);
         }
+    }
+
+    [Header("Conditions")]
+    public List<GameWinLooseCondition> winLostConditions;
+    public string currentSceneName;
+    public List<string> completedScenes;
+
+
+    private void Update()
+    {
+        if (gameIsOver)
+        {
+            return;
+        }
+
+        if (completedScenes.Contains(currentSceneName)) { return; }
+
+        if (winLostConditions != null && winLostConditions.Count > 0)
+        {
+            foreach (var condition in winLostConditions)
+            {
+                if (condition.CheckCondition())
+                {
+                    switch (condition.status)
+                    {
+                        case GameWinLooseCondition.WinLostStatus.Win:
+                            Debug.Log("Level Cleared!");
+                            LevelCleared();
+                            completedScenes.Add(currentSceneName);
+                            break;
+                        case GameWinLooseCondition.WinLostStatus.Lost:
+                            GameOver(condition.message);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+            }
+        }
+
     }
 }
